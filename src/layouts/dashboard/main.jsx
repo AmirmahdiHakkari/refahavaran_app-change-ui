@@ -10,7 +10,7 @@ import { useSettingsContext } from 'src/components/settings';
 
 // ----------------------------------------------------------------------
 
-export function Main({ children, isNavHorizontal, sx, ...other }) {
+export function Main({ children, sx, ...other }) {
   return (
     <Box
       component="main"
@@ -19,9 +19,6 @@ export function Main({ children, isNavHorizontal, sx, ...other }) {
         display: 'flex',
         flex: '1 1 auto',
         flexDirection: 'column',
-        ...(isNavHorizontal && {
-          '--layout-dashboard-content-pt': '40px',
-        }),
         ...sx,
       }}
       {...other}

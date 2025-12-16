@@ -5,7 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 
 import Box from '@mui/material/Box';
 import { Tooltip, IconButton } from '@mui/material';
-import { styled, useTheme, useColorScheme } from '@mui/material/styles';
+import { styled, useColorScheme } from '@mui/material/styles';
 
 import { paths } from 'src/routes/paths';
 
@@ -43,17 +43,7 @@ const StyledDivider = styled('span')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export function HeaderBase({
-  sx,
-  data,
-  slots,
-  slotProps,
-  onOpenNav,
-  layoutQuery,
-  slotsDisplay: { notifications = true } = {},
-  ...other
-}) {
-  const theme = useTheme();
+export function HeaderBase({ sx, slots, slotProps, layoutQuery, ...other }) {
   const router = useRouter();
   const pathname = usePathname();
 

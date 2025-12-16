@@ -1,6 +1,5 @@
 'use client';
 
-
 import { useBoolean } from 'src/hooks/use-boolean';
 
 import { Main, CompactContent } from './main';
@@ -28,15 +27,11 @@ export function SimpleLayout({ sx, children, content }) {
             account: false,
             purchase: false,
             contacts: false,
-            searchbar: false,
             workspaces: false,
-            menuButton: false,
             localization: false,
             notifications: false,
           }}
-          slots={{
-           
-          }}
+          slots={{}}
           slotProps={{ container: { maxWidth: false } }}
         />
       }

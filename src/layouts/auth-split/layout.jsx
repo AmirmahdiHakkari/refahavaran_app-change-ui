@@ -33,9 +33,7 @@ export function AuthSplitLayout({ sx, section, children }) {
             account: false,
             purchase: false,
             contacts: false,
-            searchbar: false,
             workspaces: false,
-            menuButton: false,
             localization: false,
             notifications: false,
           }}
