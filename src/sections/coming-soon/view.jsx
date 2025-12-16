@@ -21,12 +21,12 @@ export function ComingSoonView() {
 
   return (
     <Container>
-      <Typography variant="h3" sx={{ mb: 2 }}>
-        Coming soon!
+      <Typography variant="h3" sx={{ mb: 2, fontFamily: 'IRANSans' }}>
+        به زودی!
       </Typography>
 
       <Typography sx={{ color: 'text.secondary' }}>
-        We are currently working hard on this page!
+        ما در حال حاضر مشغول کار روی این صفحه هستیم!
       </Typography>
 
       <ComingSoonIllustration sx={{ my: { xs: 5, sm: 10 } }} />
@@ -37,20 +37,20 @@ export function ComingSoonView() {
         divider={<Box sx={{ mx: { xs: 1, sm: 2.5 } }}>:</Box>}
         sx={{ typography: 'h2' }}
       >
-        <TimeBlock label="days" value={countdown.days} />
-        <TimeBlock label="hours" value={countdown.hours} />
-        <TimeBlock label="minutes" value={countdown.minutes} />
-        <TimeBlock label="seconds" value={countdown.seconds} />
+        <TimeBlock label="روز" value={countdown.days} />
+        <TimeBlock label="ساعت" value={countdown.hours} />
+        <TimeBlock label="دقیقه" value={countdown.minutes} />
+        <TimeBlock label="ثانیه" value={countdown.seconds} />
       </Stack>
 
       <TextField
         fullWidth
-        placeholder="Enter your email"
+        placeholder="ایمیل خود را وارد کنید"
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
               <Button variant="contained" size="large">
-                Notify me
+                به من اطلاع بده
               </Button>
             </InputAdornment>
           ),

@@ -20,14 +20,14 @@ export function View500() {
     <SimpleLayout content={{ compact: true }}>
       <Container component={MotionContainer}>
         <m.div variants={varBounce().in}>
-          <Typography variant="h3" sx={{ mb: 2 }}>
-            500 Internal server error
+          <Typography variant="h3" sx={{ mb: 2, fontFamily: 'IRANSans' }}>
+            خطای داخلی سرور 500
           </Typography>
         </m.div>
 
         <m.div variants={varBounce().in}>
           <Typography sx={{ color: 'text.secondary' }}>
-            There was an error, please try again later.
+            خطایی رخ داده است، لطفاً بعداً دوباره امتحان کنید.
           </Typography>
         </m.div>
 
@@ -36,7 +36,7 @@ export function View500() {
         </m.div>
 
         <Button component={RouterLink} href="/" size="large" variant="contained">
-          Go to home
+          بازگشت به صفحه اصلی
         </Button>
       </Container>
     </SimpleLayout>

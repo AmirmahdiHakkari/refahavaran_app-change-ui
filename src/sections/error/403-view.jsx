@@ -20,15 +20,15 @@ export function View403() {
     <SimpleLayout content={{ compact: true }}>
       <Container component={MotionContainer}>
         <m.div variants={varBounce().in}>
-          <Typography variant="h3" sx={{ mb: 2 }}>
-            No permission
+          <Typography variant="h3" sx={{ mb: 2, fontFamily: 'IRANSans' }}>
+            دسترسی ندارید!
           </Typography>
         </m.div>
 
         <m.div variants={varBounce().in}>
           <Typography sx={{ color: 'text.secondary' }}>
-            The page you’re trying to access has restricted access. Please refer to your system
-            administrator.
+            صفحه‌ای که می‌خواهید به آن دسترسی پیدا کنید، دسترسی محدودی دارد. لطفاً با مدیر سیستم خود
+            تماس بگیرید.
           </Typography>
         </m.div>
 
@@ -37,7 +37,7 @@ export function View403() {
         </m.div>
 
         <Button component={RouterLink} href="/" size="large" variant="contained">
-          Go to home
+          بازگشت به صفحه اصلی
         </Button>
       </Container>
     </SimpleLayout>

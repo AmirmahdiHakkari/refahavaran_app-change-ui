@@ -60,12 +60,12 @@ export function HeaderBase({
   const isLoginPage = pathname.includes('/auth/jwt/sign-in');
   const isProfilePage = pathname.includes('/dashboard/profile/');
   const isSearchPage = pathname === '/dashboard/stores/search/';
+  const isCommingSoonPage = pathname === '/coming-soon/';
   const isHomePage = pathname === '/';
 
   const { mode, setMode } = useColorScheme();
 
   const handleBack = () => {
-    // اگر هیستوری نبود (ورود مستقیم)، به پروفایل بره
     if (typeof window !== 'undefined' && window.history.length > 1) {
       router.back();
     } else {
@@ -115,7 +115,7 @@ export function HeaderBase({
                 </IconButton>
               </Tooltip>
 
-              {!isProfilePage && !isSearchPage ? (
+              {!isProfilePage && !isSearchPage && !isCommingSoonPage ? (
                 <Tooltip title="پروفایل">
                   <IconButton
                     component={Link}

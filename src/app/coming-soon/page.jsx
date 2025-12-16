@@ -4,7 +4,7 @@ import { ComingSoonView } from 'src/sections/coming-soon/view';
 
 // ----------------------------------------------------------------------
 
-export const metadata = { title: `Coming soon - ${CONFIG.site.name}` };
+export const metadata = { title: `${CONFIG.site.name} | به زودی` };
 
 export default function Page() {
   return <ComingSoonView />;
