@@ -1,0 +1,87 @@
+'use client';
+
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import { ButtonBase } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import ListItemText from '@mui/material/ListItemText';
+
+import { paths } from 'src/routes/paths';
+import { RouterLink } from 'src/routes/components';
+
+import { Iconify } from 'src/components/iconify';
+
+// ----------------------------------------------------------------------
+
+const CARTS_CONFIG = [
+  { name: 'راهنما', icon: 'eva:question-mark-circle-fill', Path: paths.dashboard.blank },
+  { name: 'درباره ما', icon: 'eva:info-fill', Path: paths.dashboard.blank },
+  { name: 'گزارش تخلف فروشگاه', icon: 'eva:flag-fill', Path: paths.dashboard.blank },
+  { name: 'شرایط و مقررات', icon: 'eva:file-text-fill', Path: paths.dashboard.blank },
+  { name: 'پشتیبانی', icon: 'eva:headphones-fill', Path: paths.dashboard.blank },
+];
+
+// ----------------------------------------------------------------------
+
+export function ProfileSupport() {
+  return (
+    <>
+      <Typography variant="h4" sx={{ my: 5 }}>
+        پشتیبانی
+      </Typography>
+
+      <Box
+        gap={3}
+        display="grid"
+        gridTemplateColumns={{ xs: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }}
+      >
+        {CARTS_CONFIG.map((item) => (
+          <Cart key={item.id} config={item} />
+        ))}
+      </Box>
+    </>
+  );
+}
+
+function Cart({ config }) {
+  return (
+    <ButtonBase
+      component={RouterLink}
+      href={config.Path || '#'}
+      sx={{ width: '100%', textAlign: 'left' }}
+    >
+      <Card
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          p: (theme) => theme.spacing(3, 2, 3, 3),
+          height: 79,
+          width: '100%',
+        }}
+      >
+        <Box
+          sx={{
+            width: 48,
+            height: 48,
+            mr: 2,
+            borderRadius: '50%',
+            overflow: 'hidden',
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'transparent',
+          }}
+        >
+          <Iconify icon={config.icon} width={22} sx={{ color: 'text.primary' }} />
+        </Box>
+
+        <ListItemText
+          primary={config.name}
+          primaryTypographyProps={{ noWrap: true, typography: 'subtitle2' }}
+        />
+
+        <Iconify icon="eva:arrow-ios-back-fill" width={18} sx={{ ml: -0.5 }} />
+      </Card>
+    </ButtonBase>
+  );
+}
