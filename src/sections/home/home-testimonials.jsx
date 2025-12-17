@@ -1,167 +1,229 @@
-import Image from 'next/image';
 import { useState } from 'react';
 
 import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import { LoadingButton } from '@mui/lab';
-import Divider from '@mui/material/Divider';
+import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
 import { useRouter } from 'src/routes/hooks';
-import { RouterLink } from 'src/routes/components';
 
-import { Iconify } from 'src/components/iconify';
 import { MotionViewport } from 'src/components/animate';
-import {
-  Carousel,
-  useCarousel,
-  CarouselDotButtons,
-  carouselBreakpoints,
-  CarouselArrowBasicButtons,
-} from 'src/components/carousel';
-
-import { SectionTitle } from './components/section-title';
+import { Carousel, useCarousel, CarouselDotButtons } from 'src/components/carousel';
 
 // ----------------------------------------------------------------------
 
 export function HomeTestimonials({ sx, ...other }) {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
 
-  function ff() {
-    try {
-      router.replace('/auth/jwt/sign-in/');
-      setLoading(true);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    } finally {
-      setLoading(false);
-    }
-  }
+  const handleGoLogin = () => {
+    setLoading(true);
+    router.replace('/auth/jwt/sign-in/');
+  };
 
-  const router = useRouter();
   const carousel = useCarousel({
-    align: 'start',
-    slidesToShow: { xs: 1, sm: 2, md: 3, lg: 4 },
-    breakpoints: {
-      [carouselBreakpoints.sm]: { slideSpacing: '24px' },
-      [carouselBreakpoints.md]: { slideSpacing: '40px' },
-      [carouselBreakpoints.lg]: { slideSpacing: '64px' },
-    },
+    align: 'center',
+    slidesToShow: { xs: 1 },
+    loop: true,
   });
 
-  const renderContent = (
-    <Stack sx={{ position: 'relative', py: 1, height: 500 }}>
-      <Divider sx={{ borderStyle: 'dashed' }} />
-      <Carousel carousel={carousel} sx={{ p: 1, height: 500, width: '100%' }}>
-        {TESTIMONIALS.map((item) => (
-          <Stack
-            key={item.id}
-            sx={{
-              height: 500,
-              px: 2,
-              py: 1,
-              direction: 'rtl',
-            }}
-          >
-            <Typography variant="h6" sx={{ textAlign: 'left', fontWeight: 800, lineHeight: 1.5 }}>
-              {item.title}
-            </Typography>
+  const handleNextSlide = () => {
+    const total = carousel.dots.scrollSnaps.length || 0;
+    if (!total) return;
 
-            <Typography
-              variant="body2"
-              sx={{
-                mt: 1,
-                textAlign: 'left',
-                color: 'text.secondary',
-                lineHeight: 1.8,
-              }}
-            >
-              {item.description}
-            </Typography>
+    const nextIndex = (carousel.dots.selectedIndex + 1) % total;
+    carousel.dots.onClickDot(nextIndex);
+  };
 
-            <Box
-              sx={{
-                bgcolor: 'transparent',
-                mt: 2,
-                position: 'relative',
-                height: 300,
-                borderRadius: 2,
-              }}
-              maxWidth
-            >
-              <Image
-                src={`/assets/images/product/${item.image}`}
-                alt={item.title || 'slide'}
-                fill
-                style={{ objectFit: 'cover' }}
-                sizes="(max-width: 900px) 100vw, 900px"
-                priority={item.id === 1}
-              />
-              {item.id === 2 && (
-                <LoadingButton
-                  loadingIndicator="ادامه..."
-                  loading={loading}
-                  // component={RouterLink}
-                  type="button"
-                  variant="contained"
-                  onClick={() => ff()}
-                  startIcon={<Iconify width={18} icon="eva:arrow-ios-back-fill" sx={{ ml: 1 }} />}
-                  sx={{
-                    position: 'absolute',
-                    bottom: -38,
-                    left: 121,
-                    pl: 3,
-                  }}
-                >
-                  ادامه
-                </LoadingButton>
-              )}
-            </Box>
-          </Stack>
-        ))}
-      </Carousel>
+  return (
+    <Stack
+      component="section"
+      direction="column"
+      sx={{
+        height: '100vh',
+        position: 'relative',
+        bgcolor: (theme) => theme.palette.primary.main,
+        overflow: 'hidden',
+        color: 'common.white',
+        ...sx,
+      }}
+      {...other}
+    >
+      <Box
+        sx={{
+          flexShrink: 0,
+          p: 2,
+          px: 2.5,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        <Button
+          variant="text"
+          onClick={handleNextSlide}
+          sx={{ fontSize: 13, color: 'common.white', textTransform: 'none' }}
+          type="button"
+        >
+          بعدی
+        </Button>
 
-      <Stack direction="row" alignItems="center" justifyContent="space-between">
-        <CarouselArrowBasicButtons {...carousel.arrows} options={carousel.options} />
         <CarouselDotButtons
-          fallback
           variant="rounded"
           scrollSnaps={carousel.dots.scrollSnaps}
           selectedIndex={carousel.dots.selectedIndex}
           onClickDot={carousel.dots.onClickDot}
         />
-      </Stack>
-    </Stack>
-  );
+      </Box>
 
-  return (
-    <Stack component="section" sx={{ py: 2, position: 'relative', ...sx }} {...other}>
-      <MotionViewport>
-        <Container>
-          <SectionTitle caption="خوش‌آمدید!" sx={{ textAlign: 'center' }} />
-          {renderContent}
+      <MotionViewport
+        sx={{
+          height: '100%',
+        }}
+      >
+        <Container
+          maxWidth="sm"
+          sx={{
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Box
+            sx={{
+              width: '100%',
+              maxWidth: 420,
+              height: '100%',
+              maxHeight: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Carousel carousel={carousel} sx={{ bgcolor: 'red', height: '100%' }}>
+              {ONBOARDING_SLIDES.map((slide, index) => (
+                <Card
+                  key={slide.id}
+                  sx={{
+                    borderRadius: 3,
+                    overflow: 'hidden',
+                    boxShadow: (theme) => theme.customShadows?.z8 || theme.shadows[8],
+                    display: 'flex',
+                    flexDirection: 'column',
+                    width: '100%',
+                    height: '100%',
+                    mx: 'auto',
+                  }}
+                >
+                  {/* تصویر استوری */}
+                  {/* <Box
+                    sx={{
+                      position: 'relative',
+                      width: '100%',
+                      height: IMAGE_HEIGHT,
+                      flexShrink: 0,
+                    }}
+                  >
+                    <Image
+                      src={slide.image}
+                      alt={slide.title || 'slide'}
+                      fill
+                      style={{ objectFit: 'cover' }}
+                      sizes="(max-width: 600px) 100vw, 600px"
+                      priority={index === 0}
+                    />
+                  </Box> */}
+
+                  {/* متن زیر تصویر */}
+                  <Box
+                    sx={{
+                      p: 2.5,
+                      flexGrow: 1,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontWeight: 800,
+                        mb: 1,
+                        textAlign: 'center',
+                        color: 'text.primary',
+                      }}
+                    >
+                      {slide.title}
+                    </Typography>
+
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: 'text.secondary',
+                        textAlign: 'center',
+                        lineHeight: 1.7,
+                      }}
+                    >
+                      {slide.description}
+                    </Typography>
+                  </Box>
+                </Card>
+              ))}
+            </Carousel>
+          </Box>
         </Container>
       </MotionViewport>
+
+      {/* فوتر پایین */}
+      <Box
+        sx={{
+          flexShrink: 0,
+          borderTop: '1px dashed white',
+          py: 2,
+          px: 2,
+        }}
+      >
+        <Container maxWidth="sm">
+          <LoadingButton
+            fullWidth
+            color="inherit"
+            size="large"
+            type="button"
+            variant="contained"
+            loading={loading}
+            loadingIndicator="در حال ورود..."
+            onClick={handleGoLogin}
+            sx={{
+              bgcolor: 'common.white',
+              color: 'primary.main',
+              '&:hover': { bgcolor: 'common.white' },
+            }}
+          >
+            ورود
+          </LoadingButton>
+        </Container>
+      </Box>
     </Stack>
   );
 }
 
 // ----------------------------------------------------------------------
 
-const TESTIMONIALS = [
+const ONBOARDING_SLIDES = [
   {
     id: 1,
     title: 'خرید اقساطی بدون چک و ضامن',
-    description:
-      'بدون نیاز به چک، ضامن یا مدارک پیچیده، همین حالا خریدت رو به‌صورت اقساطی انجام بده.',
-    image: 'landing1.png',
+    description: 'در چند دقیقه، اعتبارت رو فعال کن و خریدت رو قسطی انجام بده.',
+    image: '/assets/images/product/landing1.png',
   },
   {
     id: 2,
-    title: 'پرداخت اقساط با کسر مستقیم از حقوق',
-    description: 'نظم مالی بیشتر، فراموشی کمتر، آسایش بیشتر',
-    image: 'landing2.png',
+    title: 'پرداخت اقساط بدون دغدغه',
+    description: 'اقساطت رو منظم و خودکار پرداخت کن و خیالت راحت باشه.',
+    image: '/assets/images/product/landing2.png',
   },
 ];

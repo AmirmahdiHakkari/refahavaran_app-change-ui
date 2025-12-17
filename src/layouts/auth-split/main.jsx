@@ -37,9 +37,6 @@ export function Content({ sx, children, layoutQuery, ...other }) {
     <Box
       sx={{
         width: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        maxWidth: 'var(--layout-auth-content-width)',
       }}
     >
       {children}
@@ -47,24 +44,7 @@ export function Content({ sx, children, layoutQuery, ...other }) {
   );
 
   return (
-    <Box
-      className={layoutClasses.content}
-      sx={{
-        px: 2,
-        py: 5,
-        display: 'flex',
-        flex: '1 1 auto',
-        alignItems: 'center',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        [theme.breakpoints.up(layoutQuery)]: {
-          px: 0,
-          py: 'calc(var(--layout-header-desktop-height) + 24px)',
-        },
-        ...sx,
-      }}
-      {...other}
-    >
+    <Box className={layoutClasses.content} {...other}>
       {renderContent}
     </Box>
   );

@@ -1,12 +1,7 @@
 'use client';
 
-import { paths } from 'src/routes/paths';
-
 import { useBoolean } from 'src/hooks/use-boolean';
 
-import { CONFIG } from 'src/config-global';
-
-import { Section } from './section';
 import { Main, Content } from './main';
 import { HeaderBase } from '../core/header-base';
 import { LayoutSection } from '../core/layout-section';
@@ -20,27 +15,27 @@ export function AuthSplitLayout({ sx, section, children }) {
 
   return (
     <LayoutSection
-      headerSection={
+      headerSection={null
         /** **************************************
          * Header
          *************************************** */
-        <HeaderBase
-          disableElevation
-          layoutQuery={layoutQuery}
-          onOpenNav={mobileNavOpen.onTrue}
-          slotsDisplay={{
-            signIn: false,
-            account: false,
-            purchase: false,
-            contacts: false,
-            workspaces: false,
-            localization: false,
-            notifications: false,
-          }}
-          slots={{}}
-          slotProps={{ container: { maxWidth: false } }}
-          sx={{ position: { [layoutQuery]: 'fixed' } }}
-        />
+        // <HeaderBase
+        //   disableElevation
+        //   layoutQuery={layoutQuery}
+        //   onOpenNav={mobileNavOpen.onTrue}
+        //   slotsDisplay={{
+        //     signIn: false,
+        //     account: false,
+        //     purchase: false,
+        //     contacts: false,
+        //     workspaces: false,
+        //     localization: false,
+        //     notifications: false,
+        //   }}
+        //   slots={{}}
+        //   slotProps={{ container: { maxWidth: false } }}
+        //   sx={{ position: { [layoutQuery]: 'fixed' } }}
+        // />
       }
       /** **************************************
        * Footer
@@ -55,20 +50,6 @@ export function AuthSplitLayout({ sx, section, children }) {
       }}
     >
       <Main layoutQuery={layoutQuery}>
-        <Section
-          title={section?.title}
-          layoutQuery={layoutQuery}
-          imgUrl={section?.imgUrl}
-          method={CONFIG.auth.method}
-          subtitle={section?.subtitle}
-          methods={[
-            {
-              label: 'Jwt',
-              path: paths.auth.jwt.signIn,
-              icon: `${CONFIG.site.basePath}/assets/icons/platforms/ic-jwt.svg`,
-            },
-          ]}
-        />
         <Content layoutQuery={layoutQuery}>{children}</Content>
       </Main>
     </LayoutSection>
