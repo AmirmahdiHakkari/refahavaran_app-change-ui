@@ -127,9 +127,9 @@ export function StoresView() {
           <StoreInPersonTab />
         </TabPanel>
 
-        {/* <TabPanel value={tab} index={1}>
+        <TabPanel value={tab} index={1}>
           <StoreOnlineTab />
-        </TabPanel> */}
+        </TabPanel>
       </DashboardContent>
     </>
   );
