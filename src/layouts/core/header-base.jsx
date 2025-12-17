@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import nProgress from 'nprogress';
 import { useRouter, usePathname } from 'next/navigation';
 
 import Box from '@mui/material/Box';
@@ -56,6 +57,8 @@ export function HeaderBase({ sx, slots, slotProps, layoutQuery, ...other }) {
   const { mode, setMode } = useColorScheme();
 
   const handleBack = () => {
+    nProgress.start();
+
     if (typeof window !== 'undefined' && window.history.length > 1) {
       router.back();
     } else {
@@ -118,7 +121,7 @@ export function HeaderBase({ sx, slots, slotProps, layoutQuery, ...other }) {
                 </Tooltip>
               ) : (
                 <Tooltip title="بازگشت">
-                  <IconButton color="default" aria-label="back" onClick={handleBack}>
+                  <IconButton onClick={handleBack} color="default" aria-label="back">
                     <Iconify icon="eva:arrow-ios-back-fill" width={24} />
                   </IconButton>
                 </Tooltip>

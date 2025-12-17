@@ -69,7 +69,8 @@ function Item({ item, sx, ...other }) {
       <Avatar
         variant="rounded"
         alt={item.name}
-        src={item.coverUrl}
+        // src={item.coverUrl}
+        src=""
         sx={{ width: 48, height: 48, flexShrink: 0 }}
       />
       <Box

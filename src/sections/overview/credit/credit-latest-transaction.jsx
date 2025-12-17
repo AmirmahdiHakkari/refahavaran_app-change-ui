@@ -18,6 +18,7 @@ import { Scrollbar } from 'src/components/scrollbar';
 
 export function CreditLatestTransaction({ title, subheader, list, ...other }) {
   const router = useRouter();
+
   return (
     <Card {...other}>
       <CardHeader
@@ -27,8 +28,9 @@ export function CreditLatestTransaction({ title, subheader, list, ...other }) {
           <Button
             size="small"
             color="inherit"
+            href={paths.dashboard.profile.transactions}
+            component="a"
             endIcon={<Iconify icon="eva:arrow-ios-back-fill" width={18} sx={{ ml: -0.5 }} />}
-            onClick={() => router.push(paths.dashboard.profile.transactions)}
           >
             دیدن همه
           </Button>
@@ -63,7 +65,7 @@ function Item({ item, sx, ...other }) {
         gap: 2,
         display: 'flex',
         alignItems: 'center',
-        py:2,
+        py: 2,
         ...sx,
       }}
       {...other}
@@ -71,7 +73,8 @@ function Item({ item, sx, ...other }) {
       <Avatar
         variant="rounded"
         alt={item.name}
-        src={item.coverUrl}
+        src=""
+        // src={item.coverUrl}
         sx={{ width: 48, height: 48, flexShrink: 0 }}
       />
       <Box

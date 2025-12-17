@@ -19,7 +19,7 @@ export function OverviewCreditView() {
           <Box sx={{ gap: 3, display: 'flex', flexDirection: 'column' }}>
             <CreditCurrentBalance list={_bankingCreditCard} />
 
-            <CreditLatestTransaction title="تراکنش های اخیر" list={_ecommerceLatestProducts} />
+            <CreditLatestTransaction title="تراکنش‌های اخیر" list={_ecommerceLatestProducts} />
           </Box>
         </Grid>
       </Grid>

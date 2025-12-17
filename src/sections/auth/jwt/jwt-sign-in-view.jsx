@@ -58,21 +58,21 @@ export function JwtSignInView() {
         bg: ['#6E79D6', '#5966CE'],
         title: 'خدمات مالی، هوشمند',
         subtitle: 'از کارت به کارت، خرید شارژ و اینترنت، تا پرداخت قبض رو\nسریع و آسان انجام بده.',
-        imageSrc: '/assets/digipay/story/wallet.png',
+        imageSrc: '',
       },
       {
         key: 's2',
         bg: ['#43C07D', '#2FA462'],
         title: 'سرمایه‌گذاری، بدون ریسک',
         subtitle: 'بدون ریسک در صندوق‌های درآمد ثابت سرمایه‌گذاری و\nسود کن.',
-        imageSrc: '/assets/digipay/story/safe.png',
+        imageSrc: '',
       },
       {
         key: 's3',
         bg: ['#3E89E6', '#2F6FCA'],
         title: 'خدمات بیمه، اقساطی',
         subtitle: 'آنلاین مقایسه کن و از بین ده‌ها بیمه‌گذار، نقدی یا\nاقساطی بیمه بخر.',
-        imageSrc: '/assets/digipay/story/umbrella.png',
+        imageSrc: '',
       },
       {
         key: 's4',
@@ -80,7 +80,7 @@ export function JwtSignInView() {
         title: 'خرید اقساطی، بدون ضامن',
         subtitle:
           'باتوجه به سوابق و فاکتورهای مالی، وام و اعتبار بگیر و از\nکل فروشگاه به صورت آنلاین و حضوری خرید کن.',
-        imageSrc: '/assets/digipay/story/basket.png',
+        imageSrc: '',
       },
     ],
     []
