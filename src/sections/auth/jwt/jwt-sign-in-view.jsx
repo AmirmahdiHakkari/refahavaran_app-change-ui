@@ -197,7 +197,6 @@ export function JwtSignInView() {
         <Stack
           spacing={1.2}
           sx={{
-            maxWidth: 760,
             mx: 'auto',
             mt: 5,
             textAlign: 'center',
@@ -241,7 +240,7 @@ export function JwtSignInView() {
       </Box>
 
       {/* Bottom Card */}
-      <Box sx={{ position: 'absolute', top: '235px', right: '14px' }}>
+      <Box sx={{ position: 'absolute', top: '235px', right: '5.9%' }}>
         <Paper
           elevation={0}
           sx={{

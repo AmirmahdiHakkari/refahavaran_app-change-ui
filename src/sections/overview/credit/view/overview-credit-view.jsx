@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 
 import { DashboardContent } from 'src/layouts/dashboard';
-import { _bankingCreditCard, _ecommerceLatestProducts } from 'src/_mock';
+import { MOCK_TRANSACTIONS, _bankingCreditCard, _ecommerceLatestProducts } from 'src/_mock';
 
 import { CreditCurrentBalance } from '../credit-current-balance';
 import { CreditLatestTransaction } from '../credit-latest-transaction';
@@ -19,7 +19,7 @@ export function OverviewCreditView() {
           <Box sx={{ gap: 3, display: 'flex', flexDirection: 'column' }}>
             <CreditCurrentBalance list={_bankingCreditCard} />
 
-            <CreditLatestTransaction title="تراکنش‌های اخیر" list={_ecommerceLatestProducts} />
+            <CreditLatestTransaction title="تراکنش‌های اخیر" list={MOCK_TRANSACTIONS} />
           </Box>
         </Grid>
       </Grid>
