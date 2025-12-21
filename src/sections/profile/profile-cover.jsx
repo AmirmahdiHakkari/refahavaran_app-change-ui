@@ -19,19 +19,16 @@ export function ProfileCover() {
     <Box
       sx={{
         height: 1,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
       <Stack
         direction="row"
         sx={{
           alignItems: 'center',
-          left: { md: 24 },
-          bottom: { md: 24 },
-          zIndex: { md: 10 },
-          position: { md: 'absolute' },
           flexDirection: 'column',
-          pt: 6,
-          ml: 0,
         }}
       >
         <Avatar
@@ -49,7 +46,7 @@ export function ProfileCover() {
 
         <ListItemText
           sx={{
-            mt: 3,
+            mt: 2,
             ml: 0,
             textAlign: 'center',
             flex: 'unset',

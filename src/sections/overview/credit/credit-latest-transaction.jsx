@@ -14,10 +14,13 @@ import { convertToJalali } from 'src/utils/format-time';
 import { Iconify } from 'src/components/iconify';
 import { Scrollbar } from 'src/components/scrollbar';
 
+import { EmptyContent } from './empty-content';
+
 // ----------------------------------------------------------------------
 
 export function CreditLatestTransaction({ title, subheader, list, ...other }) {
   const router = useRouter();
+  const isEmpty = !list || list.length === 0;
 
   return (
     <Card {...other}>
@@ -25,15 +28,17 @@ export function CreditLatestTransaction({ title, subheader, list, ...other }) {
         title={title}
         subheader={subheader}
         action={
-          <Button
-            size="small"
-            color="inherit"
-            href={paths.dashboard.profile.transactions}
-            component="a"
-            endIcon={<Iconify icon="eva:arrow-ios-back-fill" width={18} sx={{ ml: -0.5 }} />}
-          >
-            دیدن همه
-          </Button>
+          isEmpty ? null : (
+            <Button
+              size="small"
+              color="inherit"
+              href={paths.dashboard.profile.transactions}
+              component="a"
+              endIcon={<Iconify icon="eva:arrow-ios-back-fill" width={18} sx={{ ml: -0.5 }} />}
+            >
+              دیدن همه
+            </Button>
+          )
         }
       />
 
@@ -47,9 +52,11 @@ export function CreditLatestTransaction({ title, subheader, list, ...other }) {
             flexDirection: 'column',
           }}
         >
-          {list.map((item) => (
-            <Item key={item.id} item={item} />
-          ))}
+          {isEmpty ? (
+            <EmptyContent filled title="تراکنشی وجود ندارد" sx={{ py: 2 }} />
+          ) : (
+            list.map((item) => <Item key={item.id} item={item} />)
+          )}
         </Box>
       </Scrollbar>
     </Card>

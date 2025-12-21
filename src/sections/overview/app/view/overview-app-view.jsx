@@ -5,7 +5,6 @@ import { useTheme } from '@mui/material/styles';
 import Grid from '@mui/material/Unstable_Grid2';
 
 import { DashboardContent } from 'src/layouts/dashboard';
-import { SeoIllustration } from 'src/assets/illustrations';
 
 import { useMockedUser } from 'src/auth/hooks';
 
@@ -25,7 +24,6 @@ export function OverviewAppView() {
           <AppWelcome
             title={`Welcome back 👋 \n ${user?.displayName}`}
             description="If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything."
-            img={<SeoIllustration hideBackground />}
             action={
               <Button variant="contained" color="primary">
                 Go now

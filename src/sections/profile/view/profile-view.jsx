@@ -1,16 +1,11 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-
 import Card from '@mui/material/Card';
-import { Stack, Button, Divider } from '@mui/material';
-
-import { paths } from 'src/routes/paths';
+import { Stack, Divider } from '@mui/material';
 
 import { DashboardContent } from 'src/layouts/dashboard';
 import { SignOutButton } from 'src/layouts/components/sign-out-button';
 
-import { Iconify } from 'src/components/iconify';
 import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
 
 import { ProfileCover } from '../profile-cover';
@@ -20,24 +15,14 @@ import { ProfileManagement } from '../profile-management';
 // ----------------------------------------------------------------------
 
 export function ProfileView() {
-  const router = useRouter();
-
   return (
     <DashboardContent>
       <Stack
         sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          mb: 5,
+          mb: 3,
         }}
       >
         <CustomBreadcrumbs heading="حساب من" links={[]} />
-
-        {/* <Button variant="text" onClick={() => router.push(paths.dashboard.credit)}>
-          <Iconify icon="eva:arrow-ios-back-fill" />
-        </Button> */}
       </Stack>
 
       <Card sx={{ mb: 3, height: 250 }}>

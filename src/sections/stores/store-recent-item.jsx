@@ -19,8 +19,8 @@ export function StoreRecentItem({ product, sx, ...other }) {
         cursor: 'pointer',
         position: 'relative',
         p: 1,
-        alignItems: { xs: 'unset', sm: 'center' },
-        flexDirection: { xs: 'column', sm: 'row' },
+        alignItems: 'center',
+        flexDirection: 'column',
         bgcolor: 'background.paper',
         boxShadow: (theme) => theme.customShadows.z20,
         height: 230,
@@ -28,27 +28,13 @@ export function StoreRecentItem({ product, sx, ...other }) {
       }}
       {...other}
     >
-      <Card
-        elevation={0}
-        sx={{
-          width: '100%',
-          height: 155,
-          borderRadius: 2,
-          overflow: 'visible',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          ...sx,
-        }}
-      >
-        <Image
-          src={`/assets/images/product/${product.coverURL}`}
-          alt={product.name || 'product'}
-          width={177}
-          height={155}
-          style={{ borderRadius: 16 }}
-        />
-      </Card>
+      <Image
+        src={`/assets/images/product/${product.coverURL}`}
+        alt={product.name || 'product'}
+        width={177}
+        height={155}
+        style={{ borderRadius: 16, marginTop: 10 }}
+      />
 
       <ListItemText
         primary={product.name}

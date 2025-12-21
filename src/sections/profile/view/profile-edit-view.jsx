@@ -23,18 +23,11 @@ export function ProfileEditView({ user: currentUser }) {
     <DashboardContent>
       <Stack
         sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          mb: 5,
+          width: 1,
+          mb: 3,
         }}
       >
         <CustomBreadcrumbs heading="ویرایش اطلاعات کاربری" links={[]} />
-
-        {/* <Button variant="text" onClick={() => router.push(paths.dashboard.profile.view)}>
-          <Iconify icon="eva:arrow-ios-back-fill" />
-        </Button> */}
       </Stack>
 
       <ProfileNewEditForm currentUser={currentUser} />

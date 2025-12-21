@@ -14,7 +14,7 @@ import { CreditLatestTransaction } from '../credit-latest-transaction';
 export function OverviewCreditView() {
   return (
     <DashboardContent maxWidth="xl">
-      <Grid container spacing={3}>
+      <Grid container spacing={3} sx={{ '--Grid-columns': 'unset' }}>
         <Grid xs={12} md={7} lg={8}>
           <Box sx={{ gap: 3, display: 'flex', flexDirection: 'column' }}>
             <CreditCurrentBalance list={_bankingCreditCard} />

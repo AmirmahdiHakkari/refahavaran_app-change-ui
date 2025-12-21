@@ -62,9 +62,9 @@ export function ProfileNewEditForm({ currentUser }) {
 
   return (
     <Form methods={methods} onSubmit={onSubmit}>
-      <Grid container spacing={3}>
-        <Grid xs={12} md={4}>
-          <Card sx={{ pt: 10, pb: 5, px: 3 }}>
+      <Box container spacing={3}>
+        <Grid sx={{ mb: 3 }}>
+          <Card sx={{ pt: 3.5, px: 3 }}>
             <Box sx={{ mb: 5 }}>
               <Field.UploadAvatar
                 name="avatarUrl"
@@ -103,17 +103,9 @@ export function ProfileNewEditForm({ currentUser }) {
           </Card>
         </Grid>
 
-        <Grid xs={12} md={8}>
+        <Grid>
           <Card sx={{ p: 3 }}>
-            <Box
-              rowGap={3}
-              columnGap={2}
-              display="grid"
-              gridTemplateColumns={{
-                xs: 'repeat(1, 1fr)',
-                sm: 'repeat(2, 1fr)',
-              }}
-            >
+            <Box rowGap={3} columnGap={2} display="grid" gridTemplateColumns="repeat(1, 1fr)">
               <Field.Text name="email" label="ایمیل" />
             </Box>
 
@@ -124,7 +116,7 @@ export function ProfileNewEditForm({ currentUser }) {
             </Stack>
           </Card>
         </Grid>
-      </Grid>
+      </Box>
     </Form>
   );
 }

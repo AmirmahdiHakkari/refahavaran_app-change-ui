@@ -80,7 +80,7 @@ export function DashboardLayout({ sx, children }) {
           ? '16px'
           : `calc(var(--layout-footer-height) + ${theme.spacing(4)})`,
 
-        '--layout-dashboard-content-px': theme.spacing(5),
+        '--layout-dashboard-content-px': theme.spacing(1),
       }}
       sx={{
         [`& .${layoutClasses.hasSidebar}`]: {

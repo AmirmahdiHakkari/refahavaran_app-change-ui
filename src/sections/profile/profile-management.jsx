@@ -34,11 +34,7 @@ export function ProfileManagement() {
         مدیریت حساب
       </Typography>
 
-      <Box
-        gap={3}
-        display="grid"
-        gridTemplateColumns={{ xs: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }}
-      >
+      <Box gap={3} display="grid" gridTemplateColumns="repeat(1, 1fr)">
         {CARTS_CONFIG.map((item) => (
           <Cart key={item.id} config={item} />
         ))}

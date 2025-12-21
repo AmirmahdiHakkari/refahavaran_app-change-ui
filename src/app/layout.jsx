@@ -23,7 +23,7 @@ import { AuthProvider as JwtAuthProvider } from 'src/auth/context/jwt';
 const AuthProvider = JwtAuthProvider;
 
 export const viewport = {
-  width: 'device-width',
+  width: 450,
   initialScale: 1,
   themeColor: primary.main,
 };
