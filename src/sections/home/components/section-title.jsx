@@ -1,13 +1,7 @@
 import { m } from 'framer-motion';
 
-import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import { useTheme } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-
-import { varAlpha, textGradient } from 'src/theme/styles';
-
-import { varFade } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
 
