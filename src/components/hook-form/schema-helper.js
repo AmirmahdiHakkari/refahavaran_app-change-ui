@@ -49,14 +49,6 @@ export const schemaHelper = {
       })
       .pipe(zod.union([zod.number(), zod.string(), zod.date(), zod.null()])),
   /**
-   * editor
-   * defaultValue === '' | <p></p>
-   */
-  editor: (props) =>
-    zod.string().min(8, {
-      message: props?.message?.required_error ?? 'Editor is required!',
-    }),
-  /**
    * object
    * defaultValue === null
    */

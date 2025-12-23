@@ -10,7 +10,6 @@ import { paths } from 'src/routes/paths';
 import { varAlpha, stylesMode } from 'src/theme/styles';
 
 import Footer from 'src/components/footer/Footer';
-import { bulletColor } from 'src/components/nav-section';
 import { useSettingsContext } from 'src/components/settings';
 
 import { Main } from './main';
@@ -149,8 +148,7 @@ function useNavColorVars(theme, settings) {
             '--nav-item-color': palette.grey[500],
             '--nav-item-root-active-color': palette.primary.light,
             '--nav-item-root-open-color': palette.common.white,
-            // bullet
-            '--nav-bullet-light-color': bulletColor.dark,
+
             // sub
             ...(settings.navLayout === 'vertical' && {
               '--nav-item-sub-active-color': palette.common.white,

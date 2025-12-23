@@ -4,7 +4,7 @@ import { RouterLink } from 'src/routes/components';
 
 // ----------------------------------------------------------------------
 
-export function useNavItem({
+export function useFooterItem({
   path,
   icon,
   info,

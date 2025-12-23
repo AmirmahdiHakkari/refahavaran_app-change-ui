@@ -43,15 +43,6 @@
 /* image */
 @import './components/image/styles.css';
 
-/* map */
-@import './components/map/styles.css';
-
-/* lightbox */
-@import './components/lightbox/styles.css';
-
-/* chart */
-@import './components/chart/styles.css';
-
 @font-face {
   font-family: 'IRANSans';
   src: url('/fonts/irsansans.ttf') format('truetype');
@@ -60,7 +51,6 @@
   font-display: swap;
   unicode-range: U+000-5FF, U+600-6FF, U+FB50-FDFF, U+FE70-FEFF;
 }
-
 
 /** **************************************
 * Baseline

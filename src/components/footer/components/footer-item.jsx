@@ -8,11 +8,13 @@ import ButtonBase from '@mui/material/ButtonBase';
 import { stylesMode } from 'src/theme/styles';
 
 import { Iconify } from '../../iconify';
-import { useNavItem, stateClasses, sharedStyles, navSectionClasses } from '../../nav-section';
+import { useFooterItem } from '../hooks';
+import { FooterSectionClasses } from '../classes';
+import { stateClasses, sharedStyles } from '../styles';
 
 // ----------------------------------------------------------------------
 
-export const NavItem = forwardRef(
+export const FooterItem = forwardRef(
   (
     {
       path,
@@ -34,7 +36,7 @@ export const NavItem = forwardRef(
     },
     ref
   ) => {
-    const navItem = useNavItem({
+    const navItem = useFooterItem({
       path,
       icon,
       info,
@@ -55,49 +57,44 @@ export const NavItem = forwardRef(
         open={open && !active}
         sx={{
           ...slotProps?.sx,
-          [`& .${navSectionClasses.item.icon}`]: slotProps?.icon,
-          [`& .${navSectionClasses.item.texts}`]: slotProps?.texts,
-          [`& .${navSectionClasses.item.title}`]: slotProps?.title,
-          [`& .${navSectionClasses.item.caption}`]: slotProps?.caption,
-          [`& .${navSectionClasses.item.arrow}`]: slotProps?.arrow,
+          [`& .${FooterSectionClasses.item.icon}`]: slotProps?.icon,
+          [`& .${FooterSectionClasses.item.title}`]: slotProps?.title,
+          [`& .${FooterSectionClasses.item.caption}`]: slotProps?.caption,
+          [`& .${FooterSectionClasses.item.info}`]: slotProps?.info,
+          [`& .${FooterSectionClasses.item.arrow}`]: slotProps?.arrow,
         }}
         className={stateClasses({ open: open && !active, active, disabled })}
         {...navItem.baseProps}
         {...other}
       >
         {icon && (
-          <Box component="span" className={navSectionClasses.item.icon}>
+          <Box component="span" className={FooterSectionClasses.item.icon}>
             {navItem.renderIcon}
           </Box>
         )}
 
         {title && (
-          <Box component="span" className={navSectionClasses.item.texts}>
-            <Box component="span" className={navSectionClasses.item.title}>
-              {title}
-            </Box>
-
-            {caption && (
-              <Tooltip title={caption} placement="top-start">
-                <Box component="span" className={navSectionClasses.item.caption}>
-                  {caption}
-                </Box>
-              </Tooltip>
-            )}
+          <Box component="span" className={FooterSectionClasses.item.title}>
+            {title}
           </Box>
         )}
 
+        {caption && (
+          <Tooltip title={caption} arrow>
+            <Iconify icon="eva:info-outline" className={FooterSectionClasses.item.caption} />
+          </Tooltip>
+        )}
+
         {info && (
-          <Box component="span" className={navSectionClasses.item.info}>
+          <Box component="span" className={FooterSectionClasses.item.info}>
             {navItem.renderInfo}
           </Box>
         )}
 
         {hasChild && (
           <Iconify
-            width={16}
-            icon={open ? 'eva:arrow-ios-downward-fill' : 'eva:arrow-ios-forward-fill'}
-            className={navSectionClasses.item.arrow}
+            icon={navItem.subItem ? 'eva:arrow-ios-forward-fill' : 'eva:arrow-ios-downward-fill'}
+            className={FooterSectionClasses.item.arrow}
           />
         )}
       </StyledNavItem>
@@ -117,49 +114,33 @@ const StyledNavItem = styled(ButtonBase, {
 
   const baseStyles = {
     item: {
-      width: '100%',
+      flexShrink: 0,
       color: 'var(--nav-item-color)',
       borderRadius: 'var(--nav-item-radius)',
-      paddingTop: 'var(--nav-item-pt)',
-      paddingLeft: 'var(--nav-item-pl)',
-      paddingRight: 'var(--nav-item-pr)',
-      paddingBottom: 'var(--nav-item-pb)',
       '&:hover': {
-        backgroundColor: 'var(--nav-item-hover-color)',
+        backgroundColor: 'var(--nav-item-hover-bg)',
       },
     },
 
-    icon: {
-      ...sharedStyles.icon,
-      width: 'var(--nav-icon-size)',
-      height: 'var(--nav-icon-size)',
-      margin: 'var(--nav-icon-margin)',
-    },
-
-    texts: {
-      minWidth: 0,
-      flex: '1 1 auto',
-    },
-
     title: {
-      ...sharedStyles.noWrap,
       ...theme.typography.body2,
       fontWeight: active ? theme.typography.fontWeightSemiBold : theme.typography.fontWeightMedium,
     },
 
     caption: {
-      ...sharedStyles.noWrap,
-      ...theme.typography.caption,
+      width: 16,
+      height: 16,
       color: 'var(--nav-item-caption-color)',
     },
 
-    arrow: {
-      ...sharedStyles.arrow,
+    icon: {
+      ...sharedStyles.icon,
+      width: 24,
+      height: 'var(--nav-icon-size)',
     },
 
-    info: {
-      ...sharedStyles.info,
-    },
+    arrow: { ...sharedStyles.arrow },
+    info: { ...sharedStyles.info },
   };
 
   return {
@@ -168,13 +149,22 @@ const StyledNavItem = styled(ButtonBase, {
      */
     ...(rootItem && {
       ...baseStyles.item,
+      padding: 'var(--nav-item-root-padding)',
       minHeight: 'var(--nav-item-root-height)',
-      [`& .${navSectionClasses.item.icon}`]: { ...baseStyles.icon },
-      [`& .${navSectionClasses.item.texts}`]: { ...baseStyles.texts },
-      [`& .${navSectionClasses.item.title}`]: { ...baseStyles.title },
-      [`& .${navSectionClasses.item.caption}`]: { ...baseStyles.caption },
-      [`& .${navSectionClasses.item.arrow}`]: { ...baseStyles.arrow },
-      [`& .${navSectionClasses.item.info}`]: { ...baseStyles.info },
+      [`& .${FooterSectionClasses.item.icon}`]: {
+        ...baseStyles.icon,
+        margin: 'var(--nav-icon-root-margin)',
+      },
+      [`& .${FooterSectionClasses.item.title}`]: {
+        ...baseStyles.title,
+        whiteSpace: 'nowrap',
+      },
+      [`& .${FooterSectionClasses.item.caption}`]: {
+        ...baseStyles.caption,
+        marginLeft: theme.spacing(0.75),
+      },
+      [`& .${FooterSectionClasses.item.arrow}`]: { ...baseStyles.arrow },
+      [`& .${FooterSectionClasses.item.info}`]: { ...baseStyles.info },
       // State
       ...(active && {
         color: 'var(--nav-item-root-active-color)',
@@ -197,30 +187,23 @@ const StyledNavItem = styled(ButtonBase, {
      */
     ...(subItem && {
       ...baseStyles.item,
+      padding: 'var(--nav-item-sub-padding)',
       minHeight: 'var(--nav-item-sub-height)',
-      [`& .${navSectionClasses.item.icon}`]: { ...baseStyles.icon },
-      [`& .${navSectionClasses.item.texts}`]: { ...baseStyles.texts },
-      [`& .${navSectionClasses.item.title}`]: { ...baseStyles.title },
-      [`& .${navSectionClasses.item.caption}`]: { ...baseStyles.caption },
-      [`& .${navSectionClasses.item.arrow}`]: { ...baseStyles.arrow },
-      [`& .${navSectionClasses.item.info}`]: { ...baseStyles.info },
-      // Shape
-      '&::before': {
-        width: 3,
-        left: -13,
-        height: 16,
-        content: '""',
-        borderRadius: 3,
-        position: 'absolute',
-        transform: 'scale(0)',
-        transition: theme.transitions.create(['transform'], {
-          duration: theme.transitions.duration.short,
-        }),
-        ...(active && {
-          transform: 'scale(1)',
-          backgroundColor: 'currentColor',
-        }),
+      color: theme.vars.palette.text.secondary,
+      [`& .${FooterSectionClasses.item.icon}`]: {
+        ...baseStyles.icon,
+        margin: 'var(--nav-icon-sub-margin)',
       },
+      [`& .${FooterSectionClasses.item.title}`]: {
+        ...baseStyles.title,
+        flexGrow: 1,
+      },
+      [`& .${FooterSectionClasses.item.caption}`]: { ...baseStyles.caption },
+      [`& .${FooterSectionClasses.item.arrow}`]: {
+        ...baseStyles.arrow,
+        marginRight: theme.spacing(-0.5),
+      },
+      [`& .${FooterSectionClasses.item.info}`]: { ...baseStyles.info },
       // State
       ...(active && {
         color: 'var(--nav-item-sub-active-color)',
@@ -232,9 +215,7 @@ const StyledNavItem = styled(ButtonBase, {
       }),
     }),
 
-    /**
-     * Disabled
-     */
+    /* Disabled */
     ...(disabled && sharedStyles.disabled),
   };
 });

@@ -4,21 +4,21 @@ import ListSubheader from '@mui/material/ListSubheader';
 
 import { stylesMode } from 'src/theme/styles';
 
-import { navSectionClasses } from './classes';
 import { svgColorClasses } from '../svg-color';
+import { FooterSectionClasses } from './classes';
 import { Iconify, iconifyClasses } from '../iconify';
 
 // ----------------------------------------------------------------------
 
 export function stateClasses({ open, active, disabled }) {
-  let classes = navSectionClasses.item.root;
-
+  let classes = FooterSectionClasses.item.root;
+  
   if (active) {
-    classes += ` ${navSectionClasses.state.active}`;
+    classes += ` ${FooterSectionClasses.state.active}`;
   } else if (open) {
-    classes += ` ${navSectionClasses.state.open}`;
+    classes += ` ${FooterSectionClasses.state.open}`;
   } else if (disabled) {
-    classes += ` ${navSectionClasses.state.disabled}`;
+    classes += ` ${FooterSectionClasses.state.disabled}`;
   }
 
   return classes;
@@ -72,7 +72,7 @@ export function Subheader({ sx, open, children, ...other }) {
     <ListSubheader
       disableSticky
       component="div"
-      className={navSectionClasses.subheader}
+      className={FooterSectionClasses.subheader}
       sx={{
         gap: 1,
         cursor: 'pointer',
@@ -124,8 +124,8 @@ export function NavCollapse({ sx, depth, children, ...other }) {
       sx={{
         ...(depth + 1 !== 1 && {
           pl: 'calc(var(--nav-item-pl) + var(--nav-icon-size) / 2)',
-          [`& .${navSectionClasses.ul}`]: {
-            position: 'relative',
+          [`& .${FooterSectionClasses.ul}`]: {
+          position: 'relative',
             pl: 'var(--nav-bullet-size)',
             '&::before': {
               top: 0,
@@ -156,7 +156,7 @@ export function NavLi({ sx, children, disabled, ...other }) {
   return (
     <Box
       component="li"
-      className={navSectionClasses.li}
+      className={FooterSectionClasses.li}
       sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -176,7 +176,7 @@ export function NavUl({ children, sx, ...other }) {
   return (
     <Box
       component="ul"
-      className={navSectionClasses.ul}
+      className={FooterSectionClasses.ul}
       sx={{
         display: 'flex',
         flexDirection: 'column',

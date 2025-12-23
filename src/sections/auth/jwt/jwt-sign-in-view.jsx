@@ -23,6 +23,7 @@ import { useAuthContext } from 'src/auth/hooks';
 import { signInWithPassword } from 'src/auth/context/jwt';
 
 //----------------------------------------------------------------------
+
 export const SignInSchema = zod.object({
   phone: zod
     .string()
@@ -42,8 +43,18 @@ export function JwtSignInView() {
   const [errorMsg, setErrorMsg] = useState('');
   const password = useBoolean();
 
+  const defaultValues = useMemo(
+    () => ({
+      password: '',
+      phone: '',
+    }),
+    []
+  );
+
   const methods = useForm({
+    mode: 'onSubmit',
     resolver: zodResolver(SignInSchema),
+    defaultValues,
   });
 
   const {

@@ -14,7 +14,8 @@ import { hasParams, removeParams, isExternalLink, removeLastSlash } from 'src/ro
 import { varAlpha, stylesMode } from 'src/theme/styles';
 
 import { Iconify } from 'src/components/iconify';
-import { NavSectionHorizontalItem } from 'src/components/nav-section';
+
+import { FooterItem } from './components/footer-item';
 
 const navData = [
   { title: 'اعتبار', path: paths.dashboard.credit },
@@ -92,7 +93,7 @@ export default function Footer() {
             }
 
             return (
-              <NavSectionHorizontalItem
+              <FooterItem
                 key={item.title}
                 title={item.title}
                 depth={1}

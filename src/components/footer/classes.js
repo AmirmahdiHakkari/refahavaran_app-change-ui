@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------
 
-export const navSectionClasses = {
+export const FooterSectionClasses = {
   mini: {
     root: 'nav__section__mini',
   },
