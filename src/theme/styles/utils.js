@@ -21,13 +21,6 @@ export function setFont(fontName) {
 }
 
 /**
- * Converts rem to px
- */
-export function remToPx(value) {
-  return Math.round(parseFloat(value) * 16);
-}
-
-/**
  * Converts px to rem
  */
 export function pxToRem(value) {

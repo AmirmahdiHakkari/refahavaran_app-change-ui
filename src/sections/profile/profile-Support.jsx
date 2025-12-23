@@ -14,11 +14,11 @@ import { Iconify } from 'src/components/iconify';
 // ----------------------------------------------------------------------
 
 const CARTS_CONFIG = [
-  { name: 'راهنما', icon: 'eva:question-mark-circle-fill', Path: paths.dashboard.blank },
-  { name: 'درباره ما', icon: 'eva:info-fill', Path: paths.dashboard.blank },
-  { name: 'گزارش تخلف فروشگاه', icon: 'eva:flag-fill', Path: paths.dashboard.blank },
-  { name: 'شرایط و مقررات', icon: 'eva:file-text-fill', Path: paths.dashboard.blank },
-  { name: 'پشتیبانی', icon: 'eva:headphones-fill', Path: paths.dashboard.blank },
+  { name: 'راهنما', icon: 'eva:question-mark-circle-fill', Path: '#' },
+  { name: 'درباره ما', icon: 'eva:info-fill', Path: '#' },
+  { name: 'گزارش تخلف فروشگاه', icon: 'eva:flag-fill', Path: '#' },
+  { name: 'شرایط و مقررات', icon: 'eva:file-text-fill', Path: '#' },
+  { name: 'پشتیبانی', icon: 'eva:headphones-fill', Path: '#' },
 ];
 
 // ----------------------------------------------------------------------

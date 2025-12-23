@@ -1,7 +1,6 @@
 import { experimental_extendTheme as extendTheme } from '@mui/material/styles';
 
 import { setFont } from './styles/utils';
-import { overridesTheme } from './overrides-theme';
 import { shadows, typography, components, colorSchemes, customShadows } from './core';
 import { updateCoreWithSettings, updateComponentsWithSettings } from './with-settings/update-theme';
 
@@ -31,12 +30,7 @@ export function createTheme(localeComponents, settings) {
   /**
    * 2.Create theme + add locale + update component with settings.
    */
-  const theme = extendTheme(
-    updateTheme,
-    localeComponents,
-    updateComponentsWithSettings(settings),
-    overridesTheme
-  );
+  const theme = extendTheme(updateTheme, localeComponents, updateComponentsWithSettings(settings));
 
   return theme;
 }
@@ -72,26 +66,3 @@ function shouldSkipGeneratingVar(keys, value) {
 
   return keys.some((key) => skipGlobalKeys?.includes(key));
 }
-
-/**
-* createTheme without @settings and @locale components.
-*
- ```jsx
-export function createTheme(): Theme {
-  const initialTheme = {
-    colorSchemes,
-    shadows: shadows('light'),
-    customShadows: customShadows('light'),
-    shape: { borderRadius: 8 },
-    components,
-    typography,
-    cssVarPrefix: '',
-    shouldSkipGeneratingVar,
-  };
-
-  const theme = extendTheme(initialTheme, overridesTheme);
-
-  return theme;
-}
- ```
-*/

@@ -1,5 +1,3 @@
-import { fSub } from 'src/utils/format-time';
-
 import { CONFIG } from 'src/config-global';
 
 import {
@@ -41,7 +39,6 @@ const { assetURL } = CONFIG.site;
 
 export const _mock = {
   id: (index) => _id[index],
-  time: (index) => fSub({ days: index, hours: index }),
   boolean: (index) => _booleans[index],
   role: (index) => _roles[index],
   // Text
@@ -79,12 +76,7 @@ export const _mock = {
   },
   // Image
   image: {
-    cover: (index) => `${assetURL}/assets/images/cover/cover-${index + 1}.webp`,
     avatar: (index) => `${assetURL}/assets/images/avatar/avatar-${index + 1}.webp`,
-    travel: (index) => `${assetURL}/assets/images/travel/travel-${index + 1}.webp`,
-    course: (index) => `${assetURL}/assets/images/course/course-${index + 1}.webp`,
-    company: (index) => `${assetURL}/assets/images/company/company-${index + 1}.webp`,
     product: (index) => `${assetURL}/assets/images/m-product/product-${index + 1}.webp`,
-    portrait: (index) => `${assetURL}/assets/images/portrait/portrait-${index + 1}.webp`,
   },
 };

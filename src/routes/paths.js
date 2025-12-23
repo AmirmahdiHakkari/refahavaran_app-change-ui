@@ -12,15 +12,10 @@ export const paths = {
   page403: '/error/403',
   page404: '/error/404',
   page500: '/error/500',
-  minimalStore: 'https://mui.com/store/items/minimal-dashboard/',
   // AUTH
   auth: {
     jwt: {
       signIn: `${ROOTS.AUTH}/jwt/sign-in`,
-      signUp: `${ROOTS.AUTH}/jwt/sign-up`,
-    },
-    supabase: {
-      updatePassword: `${ROOTS.AUTH}/supabase/update-password`,
     },
   },
   // DASHBOARD
@@ -43,6 +38,5 @@ export const paths = {
     },
     installments: `${ROOTS.DASHBOARD}/installments`,
     root: ROOTS.DASHBOARD,
-    blank: `${ROOTS.DASHBOARD}/blank`,
-  },
+   },
 };
