@@ -6,5 +6,5 @@ export const metadata = { title: 'رفاه آوران' };
 
 export default function Page() {
   // return <HomeView />;
-  return <></>;
+  return <>/</>;
 }

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import ListItemText from '@mui/material/ListItemText';
-import { Card, ButtonBase, Typography } from '@mui/material';
+import { ButtonBase, Typography } from '@mui/material';
 
 import { RouterLink } from 'src/routes/components';
 

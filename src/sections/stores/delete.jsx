@@ -1,14 +1,14 @@
 'use client';
 
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
-import { Box, Card, Skeleton, Stack, Tab } from '@mui/material';
+import { Box, Card, Stack, Skeleton } from '@mui/material';
 
 import { DashboardContent } from 'src/layouts/dashboard';
-import { Scrollbar } from 'src/components/scrollbar';
-import { CustomTabs } from 'src/components/custom-tabs';
 
-import { useEffect, useState } from 'react';
+import { Scrollbar } from 'src/components/scrollbar';
+
 import { StoreItem } from './store-item';
 import { StoreTitle } from './store-title';
 import { StoreSlider } from './store-slider';

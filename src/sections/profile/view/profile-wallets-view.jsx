@@ -3,16 +3,11 @@
 import { useRouter } from 'next/navigation';
 
 import { Stack } from '@mui/material';
-import Button from '@mui/material/Button';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
-import { paths } from 'src/routes/paths';
-
 import { _bankingCreditCard } from 'src/_mock';
 import { DashboardContent } from 'src/layouts/dashboard';
-
-import { Iconify } from 'src/components/iconify';
 
 import { ProfileWallets } from '../profile-wallets';
 

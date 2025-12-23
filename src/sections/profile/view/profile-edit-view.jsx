@@ -3,13 +3,9 @@
 import { useRouter } from 'next/navigation';
 
 import { Stack } from '@mui/material';
-import Button from '@mui/material/Button';
-
-import { paths } from 'src/routes/paths';
 
 import { DashboardContent } from 'src/layouts/dashboard';
 
-import { Iconify } from 'src/components/iconify';
 import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
 
 import { ProfileNewEditForm } from '../profile-new-edit-form';
