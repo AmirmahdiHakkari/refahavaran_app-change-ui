@@ -139,7 +139,7 @@ function Item({ item, showCurrency, onToggleCurrency }) {
             <Iconify icon={showCurrency ? 'solar:eye-bold' : 'solar:eye-closed-bold'} />
           </IconButton>
 
-          <Box component="span" sx={{ typography: 'h4' }}>
+          <Box component="span" dir="rtl" sx={{ typography: 'h4' }}>
             {showCurrency ? '**********' : fCurrency(item.balance)}
           </Box>
 

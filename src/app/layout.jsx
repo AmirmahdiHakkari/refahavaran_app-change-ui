@@ -8,6 +8,7 @@ import { I18nProvider } from 'src/locales/i18n-provider';
 import { ThemeProvider } from 'src/theme/theme-provider';
 import { getInitColorSchemeScript } from 'src/theme/color-scheme-script';
 
+import { Snackbar } from 'src/components/snackbar';
 import { ProgressBar } from 'src/components/progress-bar';
 import { MotionLazy } from 'src/components/animate/motion-lazy';
 import { detectSettings } from 'src/components/settings/server';
@@ -47,6 +48,7 @@ export default async function RootLayout({ children }) {
                 <ThemeProvider>
                   <MotionLazy>
                     <ProgressBar />
+                    <Snackbar />
                     {children}
                   </MotionLazy>
                 </ThemeProvider>

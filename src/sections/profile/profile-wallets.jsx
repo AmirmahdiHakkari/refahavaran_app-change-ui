@@ -89,8 +89,7 @@ function Item({ item }) {
             alignItems: 'center',
             justifyContent: 'start',
           }}
-          color="inherit"
-        >
+         >
           <Box component="span" sx={{ typography: 'h4', opacity: 0.8 }}>
             مبلغ اعتبار :
           </Box>
