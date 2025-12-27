@@ -16,6 +16,8 @@ import { defaultSettings, SettingsProvider } from 'src/components/settings';
 
 // import { CheckoutProvider } from 'src/sections/checkout/context';
 
+import { SWRegister } from 'src/components/pwa/sw-register';
+
 import { AuthProvider as JwtAuthProvider } from 'src/auth/context/jwt';
 
 // ----------------------------------------------------------------------
@@ -28,6 +30,23 @@ export const viewport = {
   themeColor: primary.main,
 };
 
+export const metadata = {
+  applicationName: CONFIG.site.name,
+  manifest: `${CONFIG.site.basePath}/manifest.webmanifest`,
+  appleWebApp: {
+    capable: true,
+    title: CONFIG.site.name,
+    statusBarStyle: 'default',
+  },
+  icons: {
+    icon: [
+      { url: `${CONFIG.site.basePath}/favicon.ico` },
+      { url: `${CONFIG.site.basePath}/icons/icon-192.png`, sizes: '192x192' },
+    ],
+    apple: [{ url: `${CONFIG.site.basePath}/icons/apple-touch-icon.png`, sizes: '180x180' }],
+  },
+};
+
 export default async function RootLayout({ children }) {
   const lang = CONFIG.isStaticExport ? 'en' : await detectLanguage();
 
@@ -37,6 +56,8 @@ export default async function RootLayout({ children }) {
     <html lang={lang ?? 'en'} suppressHydrationWarning>
       <body>
         {getInitColorSchemeScript}
+
+        <SWRegister />
 
         <I18nProvider lang={CONFIG.isStaticExport ? undefined : lang}>
           <LocalizationProvider>
